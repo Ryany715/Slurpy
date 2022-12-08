@@ -1,15 +1,15 @@
 from os import listdir
 from os.path import isfile, join
-from slippi.parse import parse
-from slippi.parse import ParseEvent
-from slippi import Game
+#from slippi.parse import parse
+#from slippi.parse import ParseEvent
+#from slippi import Game
 #import pandas as pd
 #import matplotlib.pyplot as plt
 #from IPython.display import display
 from datetime import date, datetime
 import sqlite3
 from slippifile import SlippiFile
-from slippi.parse import ParseError
+#from slippi.parse import ParseError
 
 #conn = sqlite3.connect(':memory:')
 conn = sqlite3.connect('slippi.db')
@@ -110,11 +110,11 @@ def parse_files(files, game_limit):
     #Loop over all files
     for filename in files:
         if not get_slippi_file(filename[1]):
-            try:
-                current_game = Game(filename[0])
-            except ParseError:
-                print("Failed parsing on file: " + filename[1])
-                continue
+            #try:
+            current_game = Game(filename[0])
+            #except ParseError:
+            #    print("Failed parsing on file: " + filename[1])
+            #    continue
             if current_game.end: 
                 if 'NO_CONTEST' in str(current_game.end.method):
                     continue

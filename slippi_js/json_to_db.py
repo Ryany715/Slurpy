@@ -1,16 +1,16 @@
 import json
 from os import listdir
 from os.path import isfile, join
-from slippi.parse import parse
-from slippi.parse import ParseEvent
-from slippi import Game
+#from slippi.parse import parse
+#from slippi.parse import ParseEvent
+#from slippi import Game
 #import pandas as pd
 #import matplotlib.pyplot as plt
 #from IPython.display import display
 from datetime import date, datetime
 import sqlite3
 from slippi_classes import SlippiActionCounts, SlippiOverall
-from slippi.parse import ParseError
+#from slippi.parse import ParseError
 
 #conn = sqlite3.connect(':memory:')
 conn = sqlite3.connect('slippi.db')

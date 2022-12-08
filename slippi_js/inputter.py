@@ -1,26 +1,17 @@
 from tkinter import *
 from tkinter import filedialog
 from flask import Flask, render_template, request
-from werkzeug import secure_filename
 import os
+import requests
 
 def callback():
     # function using allows the user to pick a file of filetype
     filename = filedialog.askopenfilename(initialdir = '/', title = 'Select a File',filetypes = (('Slippi files','*.slp*'),('all files','*.*')))
     label_file_explorer.configure(text='File Opened: '+ filename)
     # this will send the slp file to Flask
-    app = Flask(__name__)
-    @app.route('/upload')
-    def upload_file():
-        return render_template('upload.html')
-    @app.route('/uploader', methods = ['GET', 'POST'])
-    def upload_file():
-        if request.method == 'POST':
-            f = request.files['file']
-            f.save(secure_filename(f.filename))
-            return 'file uploaded successfully'
-    if __name__ == 'main':
-        app.run(debug=True)
+    url = 'http://127.0.0.1:54321'
+    files = {'file': (filename, open(filename, 'rb'), 'application/pdf', {'Expires': '0'})}
+    reply = requests.post(url = url, files = files)
 
 
 root = Tk() 
